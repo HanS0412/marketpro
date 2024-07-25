@@ -9,9 +9,6 @@ const SideBarLayout = () => {
     const handleMenuProduct = () =>{
         console.log('Products')
         setSelectMenu('products')
-        //const content = document.getElementById('content')
-        //console.log(content)
-        //content.appendChild(<ProductComponent></ProductComponent>)
     }
     const renderComponent = () => {
         switch(selectMenu){
@@ -134,7 +131,7 @@ const SideBarLayout = () => {
                                 <span className="flex-1 ms-3 whitespace-nowrap">Sign Off</span>
                             </a>
                         </li>
-                        <li>
+                        {/*<li>
                             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
@@ -143,7 +140,7 @@ const SideBarLayout = () => {
                                 </svg>
                                 <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
                             </a>
-                        </li>
+                        </li>*/}
                     </ul>
                 </div>
             </aside>

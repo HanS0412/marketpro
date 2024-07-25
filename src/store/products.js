@@ -3,28 +3,28 @@ import { create } from "zustand";
 export const useProductStore = create((set,get)=>({
     products : [
         {
-            id:1,
+            id:'1',
             name: 'Apple MacBook Pro 17"',
             color: 'Silver',
-            category: 'Laptop',
-            price: 2999,
-            quantity: 50
+            category: 'Phones',
+            price: '2999',
+            quantity: '50'
         },
         {
-            id:2,
+            id:'2',
             name: 'Microsoft Surface Pro',
             color: 'White',
-            category: 'Laptop PC',
-            price: 1999,
-            quantity: 40
+            category: 'PC',
+            price: '1999',
+            quantity: '40'
         },
         {
-            id:3,
+            id:'3',
             name: 'Magic Mouse 2',
             color: 'Black',
-            category: 'Accessories',
-            price: 99,
-            quantity: 30
+            category: 'Gaming/Console',
+            price: '99',
+            quantity: '30'
         }
     ],
     addToList: (newProduct) => {
@@ -44,7 +44,7 @@ export const useProductStore = create((set,get)=>({
         }
 
         set(state => ({
-            products: [...state.products,...newProduct]
+            products: [...state.products,newProduct]
         }))
     },
     removeFromList : (id) => {

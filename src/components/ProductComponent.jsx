@@ -4,10 +4,23 @@ import { useProductStore } from '../store/products';
 
 const ProductComponent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [json, setJson] = useState({});
+    const [modalTitle, setModalTitle] = useState("Create Product");
 
-    const openModal = () => setIsModalOpen(true);
+    const openModal = () => {
+        setJson({})
+        setIsModalOpen(true)
+        setModalTitle("Create Product")
+    }
     const closeModal = () => setIsModalOpen(false);
-    const { products, addToList, removeFromList } = useProductStore()
+    const { products, removeFromList } = useProductStore()
+    const openToModal = (json)=>{
+        console.log('holaaa')
+        console.log(json)
+        setJson(json)
+        setIsModalOpen(true)
+        setModalTitle("Edit Product")
+    }
     return (
         <div className='container mx-auto mt-14'>
 
@@ -24,7 +37,7 @@ const ProductComponent = () => {
                         New
                     </button>
 
-                    <Modal isOpen={isModalOpen} onClose={closeModal} />
+                    <Modal isOpen={isModalOpen} onClose={closeModal} getData={json} getTitle={modalTitle}/>
                 </div>
             </div>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -54,7 +67,9 @@ const ProductComponent = () => {
                     <tbody>
                         {
                             products.map(p => (
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <tr 
+                                key={p.id}
+                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {p.name}
                                     </th>
@@ -71,8 +86,12 @@ const ProductComponent = () => {
                                         {`$${p.quantity}`}
                                     </td>
                                     <td className="flex items-center px-6 py-4">
-                                        <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                                        <button 
+                                        onClick={()=>openToModal(p)}
+                                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                                        <button  
+                                        onClick={()=>removeFromList(p.id)}
+                                        className="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
                                     </td>
                                 </tr>
                             ))
@@ -83,14 +102,6 @@ const ProductComponent = () => {
                     </tbody>
                 </table>
             </div>
-
-            {/* Prueba */}
-
-
-
-
-
-
         </div>
     )
 }
